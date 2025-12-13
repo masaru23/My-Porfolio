@@ -89,6 +89,19 @@ nav {
   margin-bottom: 6px;
 }
 
+.card-strings a {
+	color: #b0b0b0;          /* light gray */
+	text-decoration: none;   /* remove underline */
+	font-weight: 500;
+	transition: color 0.3s ease, letter-spacing 0.3s ease;
+}
+
+.card-strings a:hover {
+	color: #ffffff;          /* white on hover */
+	letter-spacing: 0.5px;   /* subtle hover effect */
+}
+
+
 /* ================= CARD LIGHTBOX ================= */
 .js-lightbox {
   position: fixed;
