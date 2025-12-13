@@ -1,6 +1,4 @@
-/* ==========================================
-   GLOBAL
-========================================== */
+/* ================= GLOBAL ================= */
 * {
   margin: 0;
   padding: 0;
@@ -14,9 +12,7 @@ body {
   line-height: 1.6;
 }
 
-/* ==========================================
-   HEADER
-========================================== */
+/* ================= HEADER ================= */
 .main-header {
   text-align: center;
   padding: 50px 20px;
@@ -26,7 +22,6 @@ body {
 
 .main-header h1 {
   font-size: 3rem;
-  letter-spacing: 2px;
 }
 
 nav {
@@ -38,26 +33,20 @@ nav {
   color: #fff;
   text-decoration: none;
   border-bottom: 2px solid transparent;
-  transition: 0.3s ease;
+  transition: 0.3s;
 }
 
 .nav-link:hover {
   border-bottom: 2px solid #fff;
 }
 
-/* ==========================================
-   TITLES
-========================================== */
+/* ================= TITLES ================= */
 .section-title {
   font-size: 2rem;
-  margin-top: 50px;
-  margin-left: 25px;
-  font-weight: bold;
+  margin: 50px 25px 0;
 }
 
-/* ==========================================
-   PORTFOLIO GRID
-========================================== */
+/* ================= GRID ================= */
 .portfolio-grid {
   padding: 20px 25px;
   display: grid;
@@ -65,40 +54,34 @@ nav {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
-/* ==========================================
-   CARDS
-========================================== */
+/* ================= CARDS ================= */
 .card {
   background: #1b1b1b;
   border-radius: 14px;
   padding: 15px;
   display: flex;
   flex-direction: column;
+  height: 100%;
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
-  transition: 0.2s ease;
-}
-
-.hover-grow:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 0 18px rgba(255,255,255,0.12);
+  cursor: pointer;
+  transition: 0.25s ease;
 }
 
 .card img {
   width: 100%;
   border-radius: 10px;
-  cursor: zoom-in;
+  object-fit: contain;
+  margin: 0 auto;
 }
 
-.wide-img {
-  width: 100%;
-  height: 160px;
-  object-fit: contain;
-  border-radius: 10px;
-  margin-bottom: 8px;
+.hover-grow:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 18px rgba(255,255,255,0.15);
 }
 
 .card-strings {
-  margin-top: 10px;
+  margin-top: auto;
+  padding-top: 10px;
 }
 
 .card-strings h3 {
@@ -106,43 +89,102 @@ nav {
   margin-bottom: 6px;
 }
 
-/* ==========================================
-   LIGHTBOX — FIXED, NON-FLICKERING
-========================================== */
-.lightbox {
+/* ================= CARD LIGHTBOX ================= */
+.js-lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(4px);
   display: none;
   justify-content: center;
   align-items: center;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(4px);
   z-index: 99999;
 }
 
-.lightbox:target {
+.js-lightbox.active {
   display: flex;
 }
 
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 14px;
-  box-shadow: 0 0 25px rgba(255,255,255,0.25);
+/* Modal container */
+.js-lightbox-content {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  z-index: 100000;
+  max-width: min(90vw, 900px);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+  animation: scaleIn 0.25s ease-out;
 }
 
-.lightbox .close {
-  position: fixed;
-  inset: 0;
-  z-index: 99998;
+/* Auto-center short cards */
+.js-lightbox-content:has(.card) {
+  display: flex;
+  justify-content: center;
+}
+
+/* Cloned card */
+.js-lightbox-content .card {
+  width: 100%;
+  max-height: calc(90vh - 40px);
+  overflow-y: auto;
+  transform: none !important;
+  cursor: default;
+  box-shadow: 0 0 35px rgba(255,255,255,0.25);
+}
+
+/* Images inside modal */
+.js-lightbox-content img {
+  max-height: 60vh;
+  width: 100%;
+  object-fit: contain;
+}
+
+/* Disable hover inside modal */
+.js-lightbox-content .hover-grow:hover {
+  transform: none;
+}
+
+/* Sticky close button */
+.lightbox-close {
+  position: sticky;
+  top: 0;
+  margin-left: auto;
+  margin-bottom: 10px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  font-size: 1.4rem;
   cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+  z-index: 10;
 }
 
-/* ==========================================
-   FOOTER
-========================================== */
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* Background click area */
+.js-lightbox-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+/* Scale animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* ================= FOOTER ================= */
 footer {
   margin-top: 40px;
   padding: 20px;
@@ -151,10 +193,8 @@ footer {
   background: #1a1a1a;
 }
 
-/* ==========================================
-   RESPONSIVE
-========================================== */
-@media(max-width: 600px) {
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
   .main-header h1 {
     font-size: 2.4rem;
   }
