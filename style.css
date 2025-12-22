@@ -14,29 +14,50 @@ body {
   overflow-x: hidden;
 }
 
-/* Rain overlay */
-body::before {
+/* ================= RAIN IMAGE BACKGROUND ================= */
+body::after {
   content: "";
   position: fixed;
-  inset: -50% 0 0 0;
-  background: repeating-linear-gradient(
-    120deg,
-    rgba(255,255,255,0.05) 0px,
-    rgba(255,255,255,0.05) 1px,
-    transparent 1px,
-    transparent 8px
-  );
-  animation: rainMove 24s linear infinite;
+  inset: 0;
+  background: url("assets/rain.jpg") center / cover no-repeat;
+  opacity: 0.12;
+  z-index: -2;
   pointer-events: none;
-  will-change: transform;
 }
 
-@keyframes rain {
-  from { background-position: 0 0; }
-  to { background-position: 0 20px; }
+/* ================= RANDOM RAIN PARTICLES ================= */
+#rain-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
 }
 
-/* Navbar */
+.raindrop {
+  position: absolute;
+  top: -20px;
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0),
+    rgba(255,255,255,0.35)
+  );
+  --wind: 80px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(var(--wind), 110vh);
+  }
+}
+
+/* ================= NAVBAR ================= */
 header {
   position: fixed;
   width: 100%;
@@ -71,14 +92,14 @@ nav ul {
 nav a {
   color: #e9f5ec;
   text-decoration: none;
-  transition: color .3s;
+  transition: color 0.3s;
 }
 
 nav a:hover {
   color: #b9fbc0;
 }
 
-/* Sections */
+/* ================= SECTIONS ================= */
 section {
   padding: 120px 20px 80px;
   max-width: 1100px;
@@ -104,28 +125,28 @@ section {
   color: #c8e6cf;
 }
 
-/* Glass cards */
+/* ================= GLASS CARDS ================= */
 .card {
   background: rgba(255,255,255,0.08);
   border-radius: 16px;
   padding: 30px;
   backdrop-filter: blur(12px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  transition: transform .3s;
+  transition: transform 0.3s;
 }
 
 .card:hover {
   transform: translateY(-8px);
 }
 
-/* Grids */
+/* ================= GRIDS ================= */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
 }
 
-/* Buttons */
+/* ================= BUTTONS ================= */
 .btn {
   display: inline-block;
   margin-top: 20px;
@@ -135,14 +156,14 @@ section {
   border-radius: 25px;
   text-decoration: none;
   font-weight: 600;
-  transition: background .3s;
+  transition: background 0.3s;
 }
 
 .btn:hover {
   background: #6fe07a;
 }
 
-/* Footer */
+/* ================= FOOTER ================= */
 footer {
   text-align: center;
   padding: 30px;
@@ -150,6 +171,7 @@ footer {
   font-size: 0.9rem;
 }
 
+/* ================= SCROLL ANIMATIONS ================= */
 .hidden {
   opacity: 0;
   transform: translateY(30px);
@@ -161,51 +183,7 @@ footer {
   transform: translateY(0);
 }
 
-/* Projects container */
-.projects-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
-}
-
-/* Adapt old cards to cozy glass style */
-.projects-container .card {
-  background: rgba(255,255,255,0.1);
-  border-radius: 16px;
-  padding: 20px;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  transition: transform .3s, box-shadow .3s;
-}
-
-.projects-container .card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-}
-
-.projects-container .card img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 15px;
-}
-
-.projects-container .card h3 {
-  color: #d8ffe1;
-}
-
-.projects-container .card p {
-  color: #c8e6cf;
-}
-
-.projects-container .card a {
-  display: inline-block;
-  margin-top: 10px;
-  color: #b9fbc0;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-/* Section titles */
+/* ================= SECTION TITLES ================= */
 .section-title {
   margin: 50px 0 20px;
   font-size: 1.8rem;
@@ -214,14 +192,13 @@ footer {
   padding-left: 12px;
 }
 
-/* Grid from old layout */
+/* ================= PORTFOLIO GRID ================= */
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
 }
 
-/* Re-skin old cards into cozy glass */
 .portfolio-grid .card {
   display: flex;
   flex-direction: column;
@@ -230,7 +207,7 @@ footer {
   overflow: hidden;
   backdrop-filter: blur(12px);
   box-shadow: 0 10px 25px rgba(0,0,0,0.35);
-  transition: transform .3s, box-shadow .3s;
+  transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
 }
 
@@ -244,6 +221,7 @@ footer {
   display: block;
 }
 
+/* ================= CARD TEXT AT BOTTOM ================= */
 .card-strings {
   margin-top: auto;
   padding: 15px;
@@ -267,33 +245,16 @@ footer {
   display: inline-block;
 }
 
-/* Wide images inside cards */
+/* ================= WIDE IMAGES ================= */
 .wide-img {
   width: 100%;
   display: block;
 }
 
-/* Optional: keep your old hover-grow class */
+/* ================= OPTIONAL HOVER ================= */
 .hover-grow:hover {
   transform: scale(1.03);
 }
-
-
-.fade-in {
-  animation: fadeInUp 1s ease both;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 
 /* ================= LIGHTBOX ================= */
 .js-lightbox {
@@ -311,23 +272,6 @@ footer {
   z-index: 99999;
 }
 
-.js-lightbox::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    120deg,
-    rgba(255,255,255,0.08) 0px,
-    rgba(255,255,255,0.08) 1px,
-    transparent 1px,
-    transparent 8px
-  );
-  animation: rain 0.5s linear infinite;
-  pointer-events: none;
-}
-
-
-
 .js-lightbox.active {
   display: flex;
 }
@@ -340,32 +284,21 @@ footer {
   max-height: 90vh;
   overflow-y: auto;
   padding: 20px;
-  animation: scaleIn 0.25s ease-out;
 }
 
-/* Cloned card inside modal */
 .js-lightbox-content .card {
   width: 100%;
-  max-height: calc(90vh - 40px);
-  overflow-y: auto;
   transform: none !important;
   cursor: default;
   box-shadow: 0 0 35px rgba(185, 251, 192, 0.4);
   background: rgba(255,255,255,0.12) !important;
-  color: #e9f5ec;
   backdrop-filter: blur(14px);
 }
 
 .js-lightbox-content img {
   max-height: 60vh;
   width: 100%;
-  background: transparent;
   object-fit: contain;
-}
-
-/* Disable hover grow in modal */
-.js-lightbox-content .hover-grow:hover {
-  transform: none;
 }
 
 /* Close button */
@@ -381,7 +314,6 @@ footer {
   cursor: pointer;
   padding: 6px 10px;
   border-radius: 8px;
-  z-index: 10;
 }
 
 .lightbox-close:hover {
@@ -391,18 +323,4 @@ footer {
 .js-lightbox-overlay {
   position: absolute;
   inset: 0;
-}
-
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.92); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-@keyframes rainMove {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(50%);
-  }
 }

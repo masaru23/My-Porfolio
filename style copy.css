@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #e9f5ec;
+  background: linear-gradient(to bottom, #1f3d2b, #2f5d3a);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Rain overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -50% 0 0 0;
+  background: repeating-linear-gradient(
+    100deg,
+    rgba(255,255,255,0.05) 0px,
+    rgba(255,255,255,0.05) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  animation: rainMove 24s linear infinite;
+  pointer-events: none;
+  will-change: transform;
+}
+
+@keyframes rain {
+  from { background-position: 0 0; }
+  to { background-position: 0 20px; }
+}
+
+/* Rain background image overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("assets/rain.jpg") center / cover no-repeat;
+  opacity: 0.12; /* adjust transparency here */
+  z-index: -2;
+  pointer-events: none;
+}
+
+
+/* Navbar */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(30, 60, 40, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+nav {
+  max-width: 1100px;
+  margin: auto;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #b9fbc0;
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #e9f5ec;
+  text-decoration: none;
+  transition: color .3s;
+}
+
+nav a:hover {
+  color: #b9fbc0;
+}
+
+/* Sections */
+section {
+  padding: 120px 20px 80px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #d8ffe1;
+}
+
+.hero p {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #c8e6cf;
+}
+
+/* Glass cards */
+.card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: transform .3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* Grids */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 28px;
+  background: #4caf50;
+  color: #103320;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background .3s;
+}
+
+.btn:hover {
+  background: #6fe07a;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #bde5c8;
+  font-size: 0.9rem;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Projects container */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+/* Adapt old cards to cozy glass style */
+.projects-container .card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: transform .3s, box-shadow .3s;
+}
+
+.projects-container .card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.projects-container .card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.projects-container .card h3 {
+  color: #d8ffe1;
+}
+
+.projects-container .card p {
+  color: #c8e6cf;
+}
+
+.projects-container .card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #b9fbc0;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Section titles */
+.section-title {
+  margin: 50px 0 20px;
+  font-size: 1.8rem;
+  color: #d8ffe1;
+  border-left: 4px solid #6fe07a;
+  padding-left: 12px;
+}
+
+/* Grid from old layout */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+/* Re-skin old cards into cozy glass */
+.portfolio-grid .card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+  transition: transform .3s, box-shadow .3s;
+  cursor: pointer;
+}
+
+.portfolio-grid .card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.portfolio-grid img {
+  width: 100%;
+  display: block;
+}
+
+.card-strings {
+  margin-top: auto;
+  padding: 15px;
+  text-align: center;
+}
+
+.card-strings h3 {
+  color: #d8ffe1;
+  margin-bottom: 5px;
+}
+
+.card-strings p,
+.card-strings a {
+  color: #c8e6cf;
+  font-size: 0.95rem;
+}
+
+.card-strings a {
+  color: #b9fbc0;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Wide images inside cards */
+.wide-img {
+  width: 100%;
+  display: block;
+}
+
+/* Optional: keep your old hover-grow class */
+.hover-grow:hover {
+  transform: scale(1.03);
+}
+
+
+.fade-in {
+  animation: fadeInUp 1s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ================= LIGHTBOX ================= */
+.js-lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    rgba(31, 61, 43, 0.95),
+    rgba(47, 93, 58, 0.95)
+  );
+  backdrop-filter: blur(6px);
+  z-index: 99999;
+}
+
+.js-lightbox::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    120deg,
+    rgba(255,255,255,0.08) 0px,
+    rgba(255,255,255,0.08) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  animation: rain 0.5s linear infinite;
+  pointer-events: none;
+}
+
+
+
+.js-lightbox.active {
+  display: flex;
+}
+
+.js-lightbox-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: min(90vw, 900px);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 20px;
+  animation: scaleIn 0.25s ease-out;
+}
+
+/* Cloned card inside modal */
+.js-lightbox-content .card {
+  width: 100%;
+  max-height: calc(90vh - 40px);
+  overflow-y: auto;
+  transform: none !important;
+  cursor: default;
+  box-shadow: 0 0 35px rgba(185, 251, 192, 0.4);
+  background: rgba(255,255,255,0.12) !important;
+  color: #e9f5ec;
+  backdrop-filter: blur(14px);
+}
+
+.js-lightbox-content img {
+  max-height: 60vh;
+  width: 100%;
+  background: transparent;
+  object-fit: contain;
+}
+
+/* Disable hover grow in modal */
+.js-lightbox-content .hover-grow:hover {
+  transform: none;
+}
+
+/* Close button */
+.lightbox-close {
+  position: sticky;
+  top: 0;
+  margin-left: auto;
+  margin-bottom: 10px;
+  background: rgba(20,40,30,0.8);
+  color: #e9f5ec;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.lightbox-close:hover {
+  background: rgba(185, 251, 192, 0.25);
+}
+
+.js-lightbox-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes rainMove {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(50%);
+  }
+}
+
+/* Rain container */
+#rain-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
