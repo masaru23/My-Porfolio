@@ -9,7 +9,8 @@
 body {
   font-family: 'Poppins', sans-serif;
   color: #e9f5ec;
-  background: linear-gradient(to bottom, #1f3d2b, #2f5d3a);
+  background: linear-gradient(to bottom, #1f3c3d, #2f565d);
+  /*background: linear-gradient(to bottom, #1f3d2b, #2f5d3a);*/
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -62,7 +63,8 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  background: rgba(30, 60, 40, 0.7);
+  background: rgba(30, 40, 60, 0.7);
+  /*background: rgba(30, 60, 40, 0.7);*/
   backdrop-filter: blur(10px);
   z-index: 1000;
 }
@@ -79,7 +81,8 @@ nav {
 .logo {
   font-weight: 700;
   font-size: 1.3rem;
-  color: #b9fbc0;
+  color: #90c0ff;
+  /*color: #b9fbc0;*/
   text-decoration: none;
 }
 
@@ -96,7 +99,8 @@ nav a {
 }
 
 nav a:hover {
-  color: #b9fbc0;
+  color: #90c0ff;
+  /*color: #b9fbc0;*/
 }
 
 /* ================= SECTIONS ================= */
@@ -116,13 +120,15 @@ section {
 
 .hero h1 {
   font-size: 3rem;
-  color: #d8ffe1;
+  color: #d8edff;
+  /*color: #d8ffe1;*/
 }
 
 .hero p {
   margin-top: 15px;
   font-size: 1.2rem;
-  color: #c8e6cf;
+  color: #d8edff;
+  /*color: #c8e6cf;*/
 }
 
 /* ================= GLASS CARDS ================= */
@@ -151,8 +157,10 @@ section {
   display: inline-block;
   margin-top: 20px;
   padding: 12px 28px;
-  background: #4caf50;
-  color: #103320;
+  background: #4c82af;
+  color: #102533;
+  /*background: #4caf50;
+  color: #103320;*/
   border-radius: 25px;
   text-decoration: none;
   font-weight: 600;
@@ -160,14 +168,16 @@ section {
 }
 
 .btn:hover {
-  background: #6fe07a;
+  background: #6fb7e0;
+  /*background: #6fe07a;*/
 }
 
 /* ================= FOOTER ================= */
 footer {
   text-align: center;
   padding: 30px;
-  color: #bde5c8;
+  color: #bddae5;
+  /*color: #bde5c8;*/
   font-size: 0.9rem;
 }
 
@@ -290,7 +300,8 @@ footer {
   width: 100%;
   transform: none !important;
   cursor: default;
-  box-shadow: 0 0 35px rgba(185, 251, 192, 0.4);
+  box-shadow: 0 0 35px rgba(61, 194, 255, 0.4);
+  /*box-shadow: 0 0 35px rgba(185, 251, 192, 0.4);*/
   background: rgba(255,255,255,0.12) !important;
   backdrop-filter: blur(14px);
 }
@@ -317,6 +328,7 @@ footer {
 }
 
 .lightbox-close:hover {
+  background: rgba(185, 251, 192, 0.25);
   background: rgba(185, 251, 192, 0.25);
 }
 
