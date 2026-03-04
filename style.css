@@ -197,7 +197,7 @@ footer {
 .section-title {
   margin: 50px 0 20px;
   font-size: 1.8rem;
-  color: #d8ffe1;
+  color: #d8f6ff;
   border-left: 4px solid #6fe07a;
   padding-left: 12px;
 }
@@ -239,18 +239,18 @@ footer {
 }
 
 .card-strings h3 {
-  color: #d8ffe1;
+  color: #d8f4ff;
   margin-bottom: 5px;
 }
 
 .card-strings p,
 .card-strings a {
-  color: #c8e6cf;
+  color: #c8d8e6;
   font-size: 0.95rem;
 }
 
 .card-strings a {
-  color: #b9fbc0;
+  color: #c8d8e6;
   text-decoration: none;
   display: inline-block;
 }
@@ -275,8 +275,8 @@ footer {
   align-items: center;
   background: linear-gradient(
     to bottom,
-    rgba(31, 61, 43, 0.95),
-    rgba(47, 93, 58, 0.95)
+    rgba(31, 51, 61, 0.95),
+    rgba(47, 80, 93, 0.95)
   );
   backdrop-filter: blur(6px);
   z-index: 99999;
@@ -328,8 +328,8 @@ footer {
 }
 
 .lightbox-close:hover {
-  background: rgba(185, 251, 192, 0.25);
-  background: rgba(185, 251, 192, 0.25);
+  background: rgba(185, 232, 251, 0.25);
+  background: rgba(185, 232, 251, 0.25);
 }
 
 .js-lightbox-overlay {
