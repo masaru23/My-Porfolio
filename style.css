@@ -198,7 +198,7 @@ footer {
   margin: 50px 0 20px;
   font-size: 1.8rem;
   color: #d8f6ff;
-  border-left: 4px solid #6fe07a;
+  border-left: 4px solid #6fb7e0;
   padding-left: 12px;
 }
 
@@ -318,7 +318,7 @@ footer {
   top: 0;
   margin-left: auto;
   margin-bottom: 10px;
-  background: rgba(20,40,30,0.8);
+  background: rgba(20, 30, 40, 0.8);
   color: #e9f5ec;
   border: none;
   font-size: 1.4rem;
